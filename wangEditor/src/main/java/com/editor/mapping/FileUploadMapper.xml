@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.editor.dao.FileUploadMapper" >
+  <resultMap id="BaseResultMap" type="com.editor.model.FileUpload" >
+    <id column="FID" property="fid" jdbcType="DECIMAL" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="CODE" property="code" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.editor.model.FileUpload" extends="BaseResultMap" >
+    <result column="DETAIL" property="detail" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    FID, TITLE, CODE
+  </sql>
+  <sql id="Blob_Column_List" >
+    DETAIL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from T_FILEUPLOAD
+    where FID = #{fid,jdbcType=DECIMAL} AND CODE = 1
+  </select>
+  <select id="selectAll" resultMap="ResultMapWithBLOBs">
+  	select
+  	<include refid="Base_Column_List" />
+  	,
+  	<include refid="Blob_Column_List" />
+  	from T_FILEUPLOAD WHERE CODE = 1 ORDER BY FID
+  </select>
+  <select id="selectByMaxId" resultType="com.editor.model.FileUpload">
+  	select 
+    <include refid="Base_Column_List" />
+  	,
+  	<include refid="Blob_Column_List" />
+    from T_FILEUPLOAD T
+    where not exists (select 1 from T_FILEUPLOAD F where F.FID > T.FID)
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    <!-- delete from T_FILEUPLOAD
+    where FID = #{fid,jdbcType=DECIMAL} -->
+    update T_FILEUPLOAD
+    set CODE = 0
+    where FID = #{fid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.editor.model.FileUpload" >
+    insert into T_FILEUPLOAD (FID, TITLE, DETAIL
+      )
+    values (seq_t_fileupload.nextval, #{title,jdbcType=VARCHAR}, #{detail,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.editor.model.FileUpload" >
+    insert into T_FILEUPLOAD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        FID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="detail != null" >
+        DETAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        seq_t_fileupload.nextval
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.editor.model.FileUpload" >
+    update T_FILEUPLOAD
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        DETAIL = #{detail,jdbcType=CLOB},
+      </if>
+    </set>
+    where FID = #{fid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.editor.model.FileUpload" >
+    update T_FILEUPLOAD
+    set TITLE = #{title,jdbcType=VARCHAR},
+      DETAIL = #{detail,jdbcType=CLOB}
+    where FID = #{fid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.editor.model.FileUpload" >
+    update T_FILEUPLOAD
+    set TITLE = #{title,jdbcType=VARCHAR}
+    where FID = #{fid,jdbcType=DECIMAL}
+  </update>
+</mapper>

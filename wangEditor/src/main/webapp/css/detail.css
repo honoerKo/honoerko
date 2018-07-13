@@ -1,0 +1,120 @@
+@CHARSET "UTF-8";
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#menu{
+	font-size: 15px;
+	height: 40px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+#add{
+	width: 50px;
+	text-align: center;
+	height: 100%;
+	line-height: 40px;
+	margin-left: 150px;
+	float: left;
+	font-size: 15px;
+}
+
+#query_div{
+	float: left;
+	width: 230px;
+	height: 100%;
+	line-height: 40px;
+	margin-left: 15px;
+}
+
+#query{
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 14px;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+#div_table{
+	width: 100%;
+}
+
+table{
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+
+th{
+	border: 1px solid #ccc;
+}
+
+td{
+	border: 1px solid #ccc;
+}
+
+.wid1{
+	width: 50px;
+	text-align: center;
+}
+
+.wid2{
+	width: 150px;
+}
+
+.wid3{
+	width: 600px;
+}
+
+.wid4{
+	width: 60px;
+	text-align: center;
+}
+
+.td_lineheight{
+	line-height: 50px;
+}
+
+.tbody_div{
+	width: 100%;
+	height: 50px;
+	overflow: auto;
+}
+
+ .detail{
+	width: 600px;
+}
+
+.edit_img{
+	width: 18px;
+	height: 11px;
+	cursor: pointer;
+}
+
+.dele_img{
+	width: 13px;
+	cursor: pointer;
+}
+
+.showdata {
+	position: absolute;
+	display: none;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background: white;
+	z-index: 15000;
+	min-height: 720px;
+	min-width: 950px;
+}
+
+#show{
+	width: 100%;
+	height: 95%;
+	overflow: auto;
+	border-bottom: 1px solid black;
+}
