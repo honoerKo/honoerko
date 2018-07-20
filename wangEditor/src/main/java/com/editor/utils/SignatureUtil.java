@@ -62,7 +62,7 @@ public class SignatureUtil {
     
     
     /**
-     * 获取时间戳
+     * 获取时间
      * @return
      */
     public static String getTimestamp(){

@@ -124,10 +124,24 @@ $(function() {
 				type: "POST",
 				dataType: "JSON",
 				success: function(data){
-					console.log("success");
+					$(".codemsg").show(function(){
+						$(".codemsg").html(data.msg);
+					});
+					setTimeout(function() {
+						$(".codemsg").hide(function(){
+							$(".codemsg").html("");
+						});
+					}, 2000);
 				},
 				error: function(){
-					console.log(tel);
+					$(".codemsg").show(function(){
+						$(".codemsg").html("服务器响应失败");
+					});
+					setTimeout(function() {
+						$(".codemsg").hide(function(){
+							$(".codemsg").html("");
+						});
+					}, 2000);
 				}
 			})
 		}
@@ -145,10 +159,11 @@ $(function() {
 	$(".login").click(function(){
 		var v = $(this).attr("value");
 		if(v == "0"){
-			var username = $("#newuser").val();
+			/*var username = $("#newuser").val();
 			var password = $("#newpwd").val();
 			var tel = $("#tel").val();
-			alert(username+","+password+","+tel);
+			alert(username+","+password+","+tel);*/
+			
 		}else if(v == "1"){
 			var username = $("#username").val();
 			var password = $("#password").val();

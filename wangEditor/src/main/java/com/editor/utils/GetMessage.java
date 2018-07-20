@@ -1,8 +1,10 @@
 package com.editor.utils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.JSONException;
+import org.springframework.stereotype.Component;
 
 import com.github.qcloudsms.SmsSingleSender;
 import com.github.qcloudsms.SmsSingleSenderResult;
@@ -13,28 +15,21 @@ import com.github.qcloudsms.httpclient.HTTPException;
  * @author WF  2018年7月13日下午3:52:19
  *
  */
+@Component
 public class GetMessage {
 
-	public static String[] randNum = {RandUtil.getRandNum()};
-	
-    public static void getResult(String tel) {
-		try {
-			SmsSingleSender ssender = new SmsSingleSender(ConstantUtil.ACCOUNT_SID, ConstantUtil.AUTH_TOKEN);
-			SmsSingleSenderResult result = ssender.sendWithParam("86", tel, ConstantUtil.TEMPLATE_ID, randNum, ConstantUtil.SMS_SIGN, "", "");
-			System.out.print(result);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (HTTPException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public String getCode(String tel) throws JSONException, HTTPException, IOException {
+    	String randNum = RandUtil.getRandNum();
+    	SmsSingleSender sender = new SmsSingleSender(ConstantUtil.ACCOUNT_SID, ConstantUtil.AUTH_TOKEN);
+        ArrayList<String> params = new ArrayList<String>();
+        params.add(randNum);
+        params.add("5");
+        SmsSingleSenderResult result = sender.sendWithParam("86",tel , ConstantUtil.TEMPLATE_ID, params, "", "", "");
+        if (result.result == 0) {
+        	return randNum;
+		}else {
+			return result.result+"";
+		}       
     }
-    
-    public static void main(String[] args) {
-		//System.out.println(randNum[0]);
-	}
+   
 }
