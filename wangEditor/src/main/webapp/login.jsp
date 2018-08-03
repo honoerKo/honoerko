@@ -12,8 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>登录</title>
 
 	<link rel="stylesheet" type="text/css" href="css/login.css">
-	<script type="text/javascript" src="js/jQuery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="js/login.js"></script>
+	
   </head>
   
   <body>
@@ -40,17 +39,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<div id="registered-content">
-			<div style="width: 100%;height: 40px;"></div>
+			<div id="registered-msg"></div>
 			<div class="inp">
-				<input type="text" id="newuser" class="input" placeholder="用户名" maxlength="10" onkeyup="value=value.replace(/[\W]/ig, '')"/>
+				<input type="text" id="newuser" class="input" placeholder="用户名" maxlength="10" /> <!-- onkeyup="value=value.replace(/[\W]/ig, '')" -->
 				<div class="msg"></div>
 			</div>
 			<div class="inp">
 				<input type="password" id="newpwd" class="input" placeholder="密码" />
 				<div class="msg"></div>
 				<div id="pwdmsg">
-					<div class="msg">*长度为8-16个字符</div>
-					<div class="msg">*只能使用字母、数字、下划线</div>
+					<div class="msg">长度为8-16个字符</div>
+					<div class="msg">只能使用字母、数字、下划线</div>
 				</div>
 			</div>
 			<div class="inp">
@@ -64,6 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="inp" id="code-block" style="display: none;">
 				<input type="text" id="code" placeholder="短信验证码" />
 				<button id="sendcode">发送短信验证码</button>
+				<div class="msg"></div>
 			</div>
 			<div class="inp">
 				<button class="login" value="0">立即注册</button>
@@ -71,5 +71,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	<div class="codemsg"></div>
+	
+	<script type="text/javascript" src="js/jQuery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
   </body>
 </html>

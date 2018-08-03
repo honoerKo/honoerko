@@ -30,6 +30,42 @@ editor.config.uploadParams = {
 editor.config.hideLinkImg = true
 editor.create()
 
+function getCookie(cookieName) {
+    var strCookie = document.cookie
+    var arrCookie = strCookie.split("; ")
+    for(var i = 0; i < arrCookie.length; i++){
+        var arr = arrCookie[i].split("=")
+        if(cookieName == arr[0]){
+            return arr[1]
+        }
+    }
+    return ""
+}
+function isLogin(){
+	var username = getCookie("username")
+	if(username != ""){
+		return true
+	}else{
+		return false
+	}
+}
+if(isLogin()){
+	$("#username").html(username)
+}else{
+	eleFailure()
+}
+function eleFailure(){
+	$("#Intercept").show()
+	document.getElementById("title").setAttribute("readonly", true)
+	editor.disable()
+	$("div[id='div_but'] button").attr("disabled", true)
+	$("div[id='showdiv'] div:eq(2) button").attr("disabled", true)
+}
+
+$("#username").next("a").click(function(){
+	
+})
+
 var title
 
 $('#obtain').click(function() {
@@ -51,7 +87,7 @@ $('#emptied').click(function() {
 $('#title').bind('input propertychange', function() {
 	$('.div_input').css('border-color','#ccc')
 	var title = $('#title').val()
-	if (title == null || title == "") {
+	if (title == "") {
 		$('.div_input').css('border-color','red')
 	}
 })
@@ -86,7 +122,7 @@ $('#release').click(function() {
 	var fid = $('#fid').html()
 	var title = $('#title').val()
 	var detail = editor.$txt.html()
-	if (title == null || title == "") {
+	if (title == "") {
 		$('.div_input').css('border-color','red')
 		alert("请输入标题！")
 	} else {

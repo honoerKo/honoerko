@@ -16,13 +16,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="./css/railscasts.css">
 
   </head>
-  
+
   <body>
 	  <div style="min-width: 900px;"> 	
 	   	<div class="user_div">
 	   		<p class="user_p">
-	   			用户：<span id="username">wufeng</span>
-	   			<a href="" style="text-decoration: underline;margin-left: 10px;">[退出]</a>
+	   			用户：<span id="username"></span>
+	   			<!-- <a href="" style="text-decoration: underline;margin-left: 10px;">[登出]</a> -->
 	   		</p>
 	   	</div>
 	   	<div id="fid" style="display: none;">${fid}</div>
@@ -61,6 +61,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- 等待提示框 -->
 		<div id="WaitLog" class="waitLog">   
 			<img src="./img/loading.gif" />  
+		</div>
+		
+		<div id="Intercept" class="waitLog">   
+			<div>
+				您还未登录，请先登录
+				<br>
+				<button>跳转登录</button>
+			</div>
 		</div>
 	  </div>
 	  

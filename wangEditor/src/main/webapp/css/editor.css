@@ -63,7 +63,7 @@
 
 .waitLog {
 	background: white;
-	opacity: 0.7;
+	opacity: 0.9;
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -81,6 +81,30 @@
 	height: 33px;
 	margin-top: -15px;
 	margin-left: -15px;
+}
+
+.waitLog div {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 200px;
+	height: 80px;
+	margin-top: -80px;
+	margin-left: -100px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.waitLog div button {
+	border: none;
+	outline: none;
+	background: white;
+	cursor: pointer;
+	color: blue;
+}
+
+.waitLog div button:HOVER{
+	text-decoration: underline;
 }
 
 .div_title {

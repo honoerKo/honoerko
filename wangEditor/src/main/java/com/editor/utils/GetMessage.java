@@ -17,7 +17,14 @@ import com.github.qcloudsms.httpclient.HTTPException;
  */
 @Component
 public class GetMessage {
-
+	
+    /**
+     * @param tel
+     * @return 调用短信验证平台API，返回6位验证码或者错误信息
+     * @throws JSONException
+     * @throws HTTPException
+     * @throws IOException
+     */
     public String getCode(String tel) throws JSONException, HTTPException, IOException {
     	String randNum = RandUtil.getRandNum();
     	SmsSingleSender sender = new SmsSingleSender(ConstantUtil.ACCOUNT_SID, ConstantUtil.AUTH_TOKEN);
@@ -31,5 +38,4 @@ public class GetMessage {
 			return result.result+"";
 		}       
     }
-   
 }
