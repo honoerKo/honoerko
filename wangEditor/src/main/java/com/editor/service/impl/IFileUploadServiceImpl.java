@@ -13,7 +13,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
-public class IFileUoloadServiceImpl implements IFileUploadService {
+public class IFileUploadServiceImpl implements IFileUploadService {
 
 	@Resource
 	private FileUploadMapper fileMapper;
@@ -105,6 +105,10 @@ public class IFileUoloadServiceImpl implements IFileUploadService {
 		return i;
 	}
 
+	/**
+	 * 分页查询+查询框
+	 * str（序号）
+	 */
 	public PageInfo<FileUpload> findItemByPage(int currentPage, int pageSize, String str) {
 		// TODO Auto-generated method stub
 		List<FileUpload> all = null;

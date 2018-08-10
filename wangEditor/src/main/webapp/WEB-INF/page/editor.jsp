@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div>
 				您还未登录，请先登录
 				<br>
-				<button>跳转登录</button>
+				<button onclick="toLanding()">跳转登录</button>
 			</div>
 		</div>
 	  </div>

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Component
 public class ImgUploadUtil {
+
 	
 	/**
 	 * 图片上传方法
@@ -24,8 +25,7 @@ public class ImgUploadUtil {
 	 * @return 图片本地相对地址
 	 * @throws IOException
 	 */
-	public String imgUpload(HttpServletRequest request) throws IOException{
-		String username = request.getParameter("user");
+	public String imgUpload(String username,HttpServletRequest request) throws IOException{
 		//建立文件存储地址
 		//String faFileName = getDate();
 		String filePath = ConstantUtil.PATH + username;

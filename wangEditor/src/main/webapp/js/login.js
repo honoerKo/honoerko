@@ -122,7 +122,7 @@ $("#sendcode").click(function(){
 		$("#tel").next("div").hide("fast",function(){
 			$(this).html("");
 		})
-		$.ajax({
+		/*$.ajax({
 			url: "user/sendCode",
 			data: {
 				"tel": tel
@@ -153,7 +153,7 @@ $("#sendcode").click(function(){
 					});
 				}, 2000);
 			}
-		})
+		})*/
 	}
 })
 var countdown = 10;

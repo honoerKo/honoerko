@@ -24,7 +24,7 @@ editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
 editor.config.uploadImgUrl = 'we/uploadImg'
 editor.config.uploadImgFileName = 'myFileName'
 editor.config.uploadParams = {
-    user: $('#username').html()
+    username: $('#username').html()
 }
 // 取消网络图片菜单
 editor.config.hideLinkImg = true
@@ -41,8 +41,8 @@ function getCookie(cookieName) {
     }
     return ""
 }
+var username = getCookie("username")
 function isLogin(){
-	var username = getCookie("username")
 	if(username != ""){
 		return true
 	}else{
@@ -61,10 +61,6 @@ function eleFailure(){
 	$("div[id='div_but'] button").attr("disabled", true)
 	$("div[id='showdiv'] div:eq(2) button").attr("disabled", true)
 }
-
-$("#username").next("a").click(function(){
-	
-})
 
 var title
 
@@ -155,4 +151,8 @@ function toWord() {
 
 function back() {
 	$('#showdiv').hide()
+}
+
+function toLanding(){
+	window.location.href = ""
 }
