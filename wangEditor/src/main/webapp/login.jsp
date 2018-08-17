@@ -13,6 +13,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	
+	<style type="text/css">
+        html, body {
+		  overflow: hidden;
+		  margin: 0;
+		}
+    </style>
   </head>
   
   <body>
@@ -73,6 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="codemsg"></div>
 	
 	<script type="text/javascript" src="js/jQuery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/canvas.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>
   </body>
 </html>

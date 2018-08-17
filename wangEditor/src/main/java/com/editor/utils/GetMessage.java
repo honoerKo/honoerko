@@ -25,8 +25,7 @@ public class GetMessage {
      * @throws HTTPException
      * @throws IOException
      */
-    public String getCode(String tel) throws JSONException, HTTPException, IOException {
-    	String randNum = RandUtil.getRandNum();
+    public String getCode(String tel,String randNum) throws JSONException, HTTPException, IOException {
     	SmsSingleSender sender = new SmsSingleSender(ConstantUtil.ACCOUNT_SID, ConstantUtil.AUTH_TOKEN);
         ArrayList<String> params = new ArrayList<String>();
         params.add(randNum);

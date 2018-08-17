@@ -40,7 +40,7 @@
 		<property name="maxWait" value="${pool.maxWait}" /><!-- 最大等待秒数，单位为毫秒， 超过时间会报出错误信息 -->
     </bean>
     
-    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+    <!-- 自动扫描映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<property name="dataSource" ref="dataSource"/>
     	<!-- 自动扫描mapping.xml文件 -->

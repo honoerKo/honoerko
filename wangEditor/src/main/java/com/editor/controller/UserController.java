@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.editor.utils.CookieUtil;
 import com.editor.utils.GetMessage;
+import com.editor.utils.RandUtil;
 import com.editor.utils.VerificationUtil;
 import com.github.qcloudsms.httpclient.HTTPException;
 
@@ -60,19 +61,20 @@ public class UserController {
 			/*手机号码格式验证*/
 			if (verificationUtil.isPhone(tel)) {
 				/*判断该手机号码发送短信验证码是否在间隔时间内*/
-				if(true){					
+				boolean flag = true;
+				if(flag){					
 					/*调用短信API*/
-					String result = getMessage.getCode(tel);
+					String randNum = RandUtil.getRandNum();
+					
+					String result = getMessage.getCode(tel,randNum);
 					if (result.length() == 6) {
 						msg = "{\"msg\":\"发送成功\",\"value\":0}";
-						/*将手机号码和验证码进行存储*/
-						
 					}else {
 						msg = "{\"msg\":"+result+",\"value\":1}";
 					}
-				}/*else {
-					
-				}*/
+				}else {
+					msg = "{\"msg\":\"短信已发送\",\"value\":0}";
+				}
 			} else {
 				msg = "{\"msg\":\"手机号码错误\",\"value\":1}";
 			}			
